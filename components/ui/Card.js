@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import Colors from "../../constants/colors";
 
 function Card({ children }) {
@@ -7,13 +7,15 @@ function Card({ children }) {
 
 export default Card;
 
+const deviceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
   card: {
     // flex: 1, // the attched element takes up space as much as needed
     justifyContent: "center", // justifyContent always correlate with main axis.
     // in react native, flex is by default, hence the default flexDirection is column which will act as main axis
     alignItems: "center", // alignItems always correlate with cross axis, here the cross axis is row
-    marginTop: 36, // adding 36 pixels as margin top
+    marginTop: deviceWidth < 380 ? 18 : 36, // adding 36 pixels as margin top
     marginHorizontal: 16, // adding 16 pixels margin horizontally
     padding: 16, //adding 16 pixels of padding
     backgroundColor: Colors.primary800,
